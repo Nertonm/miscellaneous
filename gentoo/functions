@@ -1,0 +1,23 @@
+# Função para correr o emerge com um ambiente customizado de /etc/portage/env/
+emerge-env() {
+    local env_name=$1
+    shift # Remove o nome do ambiente da lista de argumentos
+
+    local env_file="/etc/portage/env/${env_name}.conf"
+
+    if [ ! -f "${env_file}" ]; then
+        echo "Erro: Ficheiro de ambiente '${env_file}' não encontrado."
+        return 1
+    fi
+
+    echo ">>> A carregar o ambiente customizado: ${env_name}"
+
+    # Filtra os comentários e linhas em branco do ficheiro de ambiente
+    local env_vars=$(grep -v '^\s*#' "${env_file}" | grep -v '^\s*$')
+
+    # Executa o emerge com as variáveis filtradas
+    sudo env "${env_vars}" emerge "$@"
+}
+if [ -f ~/.bash_completion ]; then
+    . ~/.bash_completion
+fi
