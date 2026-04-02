@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🥑</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    /* Estilo para os abacates caindo */
+    .falling-avocados div {
+        opacity: 0.2; /* Define a opacidade dos abacates */
+        transition: opacity 0.3s ease; /* Suaviza a transição de opacidade */
+    }
+
+    .falling-avocados div:hover {
+        opacity: 1; /* Aumenta a opacidade ao passar o mouse */
+    }
+  </style>
+</head>
+<body>
+    <div class="falling-avocados"></div> <!-- Contêiner para os abacates caindo -->
+    <div class="hire-me" id="hire-me">Hire Me</div> <!-- Clicável -->
+    <div class="hire-me bananas-container" id="hire-me-bananas"></div> <!-- Apenas visual -->
+    <div class="basket" id="basket">🧺</div> <!-- Bacia para pegar os abacates -->
+    <div class="counter" id="counter">Abacates: 0</div> <!-- Contador de abacates -->
+    <button id="mute-button" class="mute-button">🔊</button> <!-- Botão de mute -->
+
+    <div id="portfolio-box" style="position: relative; z-index: 10;">
+        <!-- Conteúdo do portfólio -->
+
+    <div class="container">
+        <!-- Botão de alternância de tema -->
+        <button id="theme-toggle" class="theme-toggle">Alternar Tema</button>
+
+        <!-- Conteúdo principal -->
+        <div class="content">
+            <h1>Meu Portfólio</h1>
+            <p>Sou um desenvolvedor apaixonado por criar soluções criativas e eficientes. Explore meus projetos e redes sociais abaixo!</p>
+
+            <!-- Redes sociais -->
+            <div class="social-links">
+                <h2>Minhas Redes Sociais 🌐</h2>
+                <a href="https://github.com/nertonm" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/thiago-nerton-macedo-alves-6bbab8277/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+
+            <!-- Projetos -->
+            <div class="projects">
+                <h2>Meus Projetos Importantes</h2>
+                <ul id="project-list">
+                    <!-- Projetos serão carregados automaticamente -->
+                </ul>
+            </div>
+
+            <div class="comment-box">
+                <h2>Comentários</h2>
+                <textarea id="comment" placeholder="Deixe um comentário"></textarea>
+                <button id="add-comment" type="button">Adicionar Comentário</button>
+                <div id="comments"></div>
+            </div>
+        </div>
+
+        <!-- Abacate 3D -->
+        <div class="model">
+            <model-viewer src="./abacate.glb" alt="Abacate 3D" auto-rotate camera-controls></model-viewer>
+        </div>
+    </div>
+</div>
+    <div class="footer">
+
+    </div>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>

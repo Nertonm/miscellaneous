@@ -1,0 +1,191 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 34,
+    "spacing": 4,
+    "margin-top": 0,
+    "margin-bottom": 0,
+
+    "modules-left": ["hyprland/workspaces", "group/hardware"],
+    "modules-center": ["hyprland/window", "mpris"],
+    "modules-right": [
+        "tray",
+        "pulseaudio",
+        "custom/sunset",
+        "custom/battery_toggle",
+        "custom/clipboard",
+        "custom/notification",
+        "battery",
+        "custom/clock",
+        "custom/power"
+    ],
+
+    "custom/battery_toggle": {
+        "exec": "$HOME/.local/bin/battery-toggle.sh status",
+        "return-type": "json",
+        "interval": "once",
+        "signal": 8,
+        "on-click": "$HOME/.local/bin/battery-toggle.sh",
+        "tooltip": true
+    },
+
+    "group/hardware": {
+        "orientation": "horizontal",
+        "name": "hardware",
+        "modules": [
+            "cpu",
+            "memory",
+            "temperature",
+            "disk",
+            "network",
+            "bluetooth"
+        ]
+    },
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate",
+        "format": "{name}",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+
+    "hyprland/window": {
+        "format": "  {title}",
+        "max-length": 30,
+        "separate-outputs": true
+    },
+
+    "mpris": {
+        "format": "{player_icon} {dynamic}",
+        "format-paused": "{status_icon} <i>{dynamic}</i>",
+        "player-icons": {
+            "default": "▶",
+            "mpv": "🎵"
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        "max-length": 25
+    },
+
+    "custom/clock": {
+        "exec": "date +'%H:%M  %d/%m'",
+        "interval": 60,
+        "format": " {}",
+        "tooltip": false
+    },
+
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    },
+
+    "custom/clipboard": {
+        "format": "",
+        "on-click": "cliphist list | wofi --dmenu | cliphist decode | wl-copy",
+        "tooltip": false
+    },
+
+    "custom/notification": {
+        "format": "{}",
+        "exec": "$HOME/.local/bin/dunst-status.sh",
+        "return-type": "json",
+        "interval": 2,
+        "signal": 9,
+        "on-click": "$HOME/.local/bin/dunst-history.sh",
+        "on-click-right": "dunstctl set-paused toggle && pkill -RTMIN+9 waybar",
+        "tooltip": false
+    },
+
+    "custom/sunset": {
+        "interval": 2,
+        "exec": "$HOME/.local/bin/sunset-control.sh status",
+        "return-type": "json",
+        "on-click": "$HOME/.local/bin/sunset-control.sh toggle",
+        "on-scroll-up": "$HOME/.local/bin/sunset-control.sh up",
+        "on-scroll-down": "$HOME/.local/bin/sunset-control.sh down",
+        "tooltip": true
+    },
+
+    "cpu": {
+        "format": " {usage:2}% |",
+        "interval": 2,
+        "on-click": "kitty --class floating_btop -e btop"
+    },
+
+    "memory": {
+        "format": " {percentage:2}% |",
+        "interval": 2,
+        "on-click": "kitty --class floating_btop -e btop"
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": " {temperatureC}°C |",
+        "interval": 2,
+        "on-click": "kitty --class floating_btop -e btop"
+    },
+
+    "disk": {
+        "interval": 30,
+        "format": "󰋊 {percentage_used:2}% |",
+        "path": "/"
+    },
+
+    "network": {
+        "format-wifi": " {essid} {signalStrength}% |",
+        "format-ethernet": " {ifname} |",
+        "format-disconnected": " Offline |",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format-wifi": " {essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": " {ifname} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50,
+        "on-click": "kitty --class floating_nmtui -e nmtui",
+        "on-click-right": "nm-connection-editor"
+    },
+
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click": "kitty --class floating_bluetuith -e bluetuith"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "on-click": "kitty --class floating_pulsemixer -e pulsemixer",
+        "on-click-right": "pavucontrol",
+        "format-icons": {
+            "default": ["", "", ""]
+        }
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "custom/power": {
+        "format": "",
+        "on-click": "$HOME/.local/bin/shutdown-menu.sh",
+        "on-click-right": "$HOME/.local/bin/suspend-script.sh",
+        "tooltip": false
+    }
+}

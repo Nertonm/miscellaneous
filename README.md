@@ -4,32 +4,17 @@ Este repositório contém arquivos e scripts variados, reunidos para diferentes 
 
 ## Estrutura atual do repositório
 
-- `.vimrc`  
-  Arquivo de configuração para o editor Vim, contendo personalizações e atalhos.
-
 - `README.md`  
   Este arquivo de descrição do projeto.
 
-- `abacate.glb`  
-  Modelo 3D no formato GLB.
+- `portfolio/`  
+  Projeto web com demonstração 3D interativa ("Hire Me"), contendo arquivos HTML, CSS, JavaScript, modelos 3D (`abacate.glb`) e áudio.
 
-- `comments.json`  
-  Arquivo JSON vazio, reservado para testes ou armazenamento de dados.
-
-- `gentoo/`  
-  Diretório reservado, possivelmente para scripts ou configurações relacionadas ao Gentoo Linux.
-
-- `index.html`  
-  Página HTML principal, pode ser utilizada para testes ou demonstrações web.
-
-- `plim.mp3`  
-  Arquivo de áudio no formato MP3.
-
-- `script.js`  
-  Script JavaScript para uso geral, podendo estar vinculado ao `index.html`.
-
-- `style.css`  
-  Folha de estilos CSS para customização visual, geralmente utilizada junto ao `index.html`.
+- `configs/`  
+  Configurações de sistema e ambiente:
+  - `vim/.vimrc`: Arquivo de configuração e atalhos para o editor Vim.
+  - `gentoo/`: Scripts e configurações relacionadas ao Gentoo Linux.
+  - `hyprland-dotfiles/`: Repositório de dotfiles do ambiente desktop Hyprland.
 
 ## Objetivo
 

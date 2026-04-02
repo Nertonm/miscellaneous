@@ -1,0 +1,24 @@
+[opener]
+edit = [
+    { run = '${EDITOR:-vi} "$@"', desc = "Editar", block = true, for = "unix" },
+]
+open = [
+    { run = 'xdg-open "$@"', desc = "Abrir no Sistema", orphan = true, for = "unix" },
+]
+extract = [
+    { run = '7z x "$1" -o"${1%.*}"', desc = "Extrair Aqui (pasta)", for = "unix" },
+]
+
+[open]
+rules = [
+    # Arquivos compactados: Terão opção de Extrair e Abrir. Isso ativará o menu.
+    { name = "*.7z", use = [ "extract", "open" ] },
+    { name = "*.zip", use = [ "extract", "open" ] },
+    { name = "*.rar", use = [ "extract", "open" ] },
+    { name = "*.tar.gz", use = [ "extract", "open" ] },
+    { name = "*.gz", use = [ "extract", "open" ] },
+    { name = "*.xz", use = [ "extract", "open" ] },
+    
+    # Todo o resto: Apenas abrir. Como só tem 1 opção, o menu não aparece (abre direto).
+    { name = "*", use = [ "open" ] },
+]

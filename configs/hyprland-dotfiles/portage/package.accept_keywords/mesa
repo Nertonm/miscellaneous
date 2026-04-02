@@ -1,0 +1,8 @@
+# Permite a instalação do Mesa do ramo de teste
+media-libs/mesa ~amd64
+
+# Permite a dependência principal também do ramo de teste
+media-libs/libglvnd ~amd64
+
+dev-util/mesa_clc ~amd64
+dev-util/spirv-llvm-translator ~amd64

@@ -1,0 +1,7 @@
+sys-kernel/gentoo-kernel-bin
+sys-kernel/gentoo-sources
+virtual/dist-kernel 
+sys-kernel/linux-firmware
+
+#sys-kernel/gentoo-kernel 
+sys-boot/grub-themes-gentoo

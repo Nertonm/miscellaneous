@@ -1,0 +1,5 @@
+gui-wm/sway swaybar swaynag wallpapers tray
+gui-libs/wlroots vulkan  
+gui-apps/waybar tray network pulseaudio pipewire
+dev-libs/libdbusmenu gtk3
+gui-apps/swaybg gdk-pixbuf

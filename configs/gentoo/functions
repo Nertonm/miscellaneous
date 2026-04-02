@@ -1,0 +1,29 @@
+# shellcheck shell=bash
+
+# Função para correr o emerge com um ambiente customizado de /etc/portage/env/
+emerge-env() {
+    local env_name=$1
+    shift # Remove o nome do ambiente da lista de argumentos
+
+    local env_file="/etc/portage/env/${env_name}.conf"
+
+    if [ ! -f "${env_file}" ]; then
+        echo "Erro: Ficheiro de ambiente '${env_file}' não encontrado."
+        return 1
+    fi
+
+    echo ">>> A carregar o ambiente customizado: ${env_name}"
+
+    # Executa o emerge depois de carregar o ficheiro como shell env.
+    sudo bash -lc '
+        set -a
+        . "$1"
+        set +a
+        shift
+        exec emerge "$@"
+    ' _ "${env_file}" "$@"
+}
+if [ -f ~/.bash_completion ]; then
+    # shellcheck source=/dev/null
+    . ~/.bash_completion
+fi

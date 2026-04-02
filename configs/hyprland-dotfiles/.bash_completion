@@ -1,0 +1,25 @@
+# Autocomplete para o comando customizado emerge-env
+_emerge_env_completion() {
+    local cur prev words cword
+    _get_comp_words_by_ref -n : cur prev words cword
+
+    # Se estamos a completar o primeiro argumento (o nome do ambiente)
+    if [ "$cword" -eq 1 ]; then
+        # Pega a lista de ficheiros em /etc/portage/env,
+        # filtra apenas os que terminam em .conf,
+        # e remove a extensão .conf
+        local envs=$(ls /etc/portage/env/ | grep '\.conf$' | sed 's/\.conf$//')
+        COMPREPLY=( $(compgen -W "${envs}" -- "${cur}") )
+        return 0
+    fi
+
+    # Para todos os outros argumentos, use o autocomplete do emerge
+    # "Escondemos" os dois primeiros argumentos (emerge-env e o nome do ambiente)
+    # para que o autocomplete do emerge pense que está a lidar com um comando normal
+    cword=$((cword - 1))
+    words=("${words[@]:1}")
+    _command emerge
+}
+
+# Associa a nossa função ao comando emerge-env
+complete -F _emerge_env_completion emerge-env

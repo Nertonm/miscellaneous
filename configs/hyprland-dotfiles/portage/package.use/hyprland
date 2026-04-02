@@ -1,0 +1,3 @@
+# X: Suporte a XWayland (Steam/Jogos precisam disso)
+# systemd: Integração com seu init
+gui-wm/hyprland X systemd xwayland

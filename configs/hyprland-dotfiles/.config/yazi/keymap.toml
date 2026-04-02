@@ -1,0 +1,4 @@
+[[mgr.prepend_keymap]]
+on   = [ "<C-o>" ]
+run  = "open --interactive"
+desc = "Abrir com opções"

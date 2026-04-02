@@ -1,0 +1,3 @@
+# /etc/portage/package.use/pipewire
+media-video/pipewire sound-server pipewire-alsa
+media-sound/pulseaudio -daemon

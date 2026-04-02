@@ -1,0 +1,3 @@
+app-misc/corectrl ~amd64
+dev-cpp/units ~amd64
+x11-libs/libdrm ~amd64

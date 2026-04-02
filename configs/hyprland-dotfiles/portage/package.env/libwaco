@@ -1,0 +1,6 @@
+dev-libs/libwacom pie.conf
+x11-drivers/xf86-input-wacom pie.conf
+dev-qt/qtbase pie.conf
+sys-devel/binutils safe-compile.conf
+sys-devel/binutils nodistcc.conf
+kde-plasma/wacomtablet nodistcc.conf

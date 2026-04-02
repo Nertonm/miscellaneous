@@ -1,0 +1,89 @@
+/* Tema Sóbrio - Muted Sunset Palette */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrains Mono Nerd Font", "Roboto", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(30, 30, 30, 0.9); /* Cinza neutro escuro */
+    color: #cfc9c2; /* Bege claro suave */
+}
+
+/* --- Grupos --- */
+
+/* Esquerda: Workspaces */
+#workspaces button {
+    padding: 0 10px;
+    background-color: transparent;
+    color: #666666;
+    font-weight: bold;
+}
+
+#workspaces button.active {
+    color: #c6a679; /* Âmbar suave */
+    border-bottom: 2px solid #c6a679;
+}
+
+/* Centro: Título e Mídia */
+#window, #mpris {
+    padding: 0 15px;
+    background-color: #2a2a2a; /* Ligeiramente mais claro que o fundo */
+    margin: 4px 5px;
+    border-radius: 6px;
+    color: #a89984; /* Tom terroso neutro */
+}
+
+/* Direita: Módulos Individuais e Grupos */
+
+#hardware {
+    background-color: #2a2a2a;
+    margin: 4px 2px;
+    padding: 0 5px;
+    border-radius: 4px;
+}
+
+#cpu, #memory, #temperature, #disk, #network, #bluetooth, #pulseaudio, #tray, 
+#custom-sunset, #custom-clipboard, #custom-notification, #battery, #custom-battery_toggle {
+    background-color: #2a2a2a;
+    padding: 0 10px;
+    margin: 4px 2px;
+    border-radius: 4px;
+    color: #a89984; 
+}
+
+/* Remove backgrounds and margins when inside a group to look unified */
+#hardware #cpu, 
+#hardware #memory, 
+#hardware #temperature, 
+#hardware #disk, 
+#hardware #network,
+#hardware #bluetooth {
+    background-color: transparent;
+    margin: 0;
+    padding: 0 7px;
+}
+
+/* Destaques sutis para os ícones de ferramentas */
+#custom-sunset { color: #c6a679; }
+#custom-notification { color: #d79921; }
+#bluetooth { color: #83a598; } /* Azul suave para Bluetooth */
+
+/* Grupo 4: Vital (Relógio) */
+#custom-clock { 
+    padding: 0 12px;
+    margin: 4px 2px;
+    border-radius: 4px;
+    color: #1e1e1e; 
+    background-color: #c6a679; /* Âmbar suave (não brilha tanto) */
+    font-weight: bold;
+}
+
+/* Power */
+#custom-power {
+    color: #fb4934; /* Vermelho queimado, mais discreto */
+    background-color: transparent;
+    padding: 0 15px;
+}
